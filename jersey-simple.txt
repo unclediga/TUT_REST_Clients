@@ -1,0 +1,55 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jersey-simple 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ jersey-simple ---
+[INFO] ru.unclediga:jersey-simple:jar:1.0-SNAPSHOT
+[INFO] +- org.glassfish.jersey.containers:jersey-container-grizzly2-http:jar:2.35:compile
+[INFO] |  +- org.glassfish.hk2.external:jakarta.inject:jar:2.6.1:compile
+[INFO] |  +- org.glassfish.grizzly:grizzly-http-server:jar:2.4.4:compile
+[INFO] |  |  \- org.glassfish.grizzly:grizzly-http:jar:2.4.4:compile
+[INFO] |  |     \- org.glassfish.grizzly:grizzly-framework:jar:2.4.4:compile
+[INFO] |  +- org.glassfish.jersey.core:jersey-common:jar:2.35:compile
+[INFO] |  |  +- jakarta.annotation:jakarta.annotation-api:jar:1.3.5:compile
+[INFO] |  |  \- org.glassfish.hk2:osgi-resource-locator:jar:1.0.3:compile
+[INFO] |  +- org.glassfish.jersey.core:jersey-server:jar:2.35:compile
+[INFO] |  |  +- org.glassfish.jersey.core:jersey-client:jar:2.35:compile
+[INFO] |  |  \- jakarta.validation:jakarta.validation-api:jar:2.0.2:compile
+[INFO] |  \- jakarta.ws.rs:jakarta.ws.rs-api:jar:2.1.6:compile
+[INFO] +- org.glassfish.jersey.inject:jersey-hk2:jar:2.35:compile
+[INFO] |  +- org.glassfish.hk2:hk2-locator:jar:2.6.1:compile
+[INFO] |  |  +- org.glassfish.hk2.external:aopalliance-repackaged:jar:2.6.1:compile
+[INFO] |  |  +- org.glassfish.hk2:hk2-api:jar:2.6.1:compile
+[INFO] |  |  \- org.glassfish.hk2:hk2-utils:jar:2.6.1:compile
+[INFO] |  \- org.javassist:javassist:jar:3.25.0-GA:compile
+[INFO] \- junit:junit:jar:4.12:test
+[INFO]    \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.219 s
+[INFO] Finished at: 2022-11-28T18:49:35+03:00
+[INFO] Final Memory: 9M/23M
+[INFO] ------------------------------------------------------------------------
+C:.
+³   jersey-simple.txt
+³   pom.xml
+³   
+ÀÄÄÄsrc
+    ÃÄÄÄmain
+    ³   ÀÄÄÄjava
+    ³       ÀÄÄÄru
+    ³           ÀÄÄÄunclediga
+    ³               ÀÄÄÄjersey
+    ³                       Main.java
+    ³                       MyResource.java
+    ³                       
+    ÀÄÄÄtest
+        ÀÄÄÄjava
+            ÀÄÄÄru
+                ÀÄÄÄunclediga
+                    ÀÄÄÄjersey
+                            MyResourceTest.java
+                            
