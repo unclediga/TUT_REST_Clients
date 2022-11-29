@@ -35,6 +35,19 @@
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
         </dependency>
+        <!-- <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-moxy</artifactId>
+        </dependency> -->
+
+        <!-- This dependency present in examples pom.xml
+        https://github.com/eclipse-ee4j/jersey/tree/2.37/examples/jaxb -->
+
+        <!-- <dependency>
+            <groupId>org.codehaus.woodstox</groupId>
+            <artifactId>woodstox-core-asl</artifactId>
+            <version>4.1.2</version>
+	    </dependency> -->
 
         <dependency>
             <groupId>junit</groupId>
