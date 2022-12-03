@@ -22,7 +22,7 @@ public class TestRESTAssured extends MyResourceTest{
         .request("GET", "/myresource")
         .then()
         .statusCode(200)
-        .body("", equalTo("Got it!"));
+        .body(hasToString("Got it!"));
     }
 
     @Test
