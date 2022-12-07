@@ -32,13 +32,19 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data.xml")) {
+        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data3.xml")) {
             return new FlatXmlDataSetBuilder().build(resourceAsStream);
         }
     }
 
     private IDataSet getDataSet2() throws Exception {
         try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data2.xml")) {
+            return new FlatXmlDataSetBuilder().build(resourceAsStream);
+        }
+    }
+
+    private IDataSet getDataSet3() throws Exception {
+        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data3.xml")) {
             return new FlatXmlDataSetBuilder().build(resourceAsStream);
         }
     }
@@ -89,5 +95,13 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         ITable actualTable = databaseDataSet.getTable("ITEMS");
         Assertion.assertEquals(expectedTable, actualTable);
     }
-    
+
+    @Test
+    public void AGRO_MOB_USER() throws Exception {
+        IDataSet expectedDataSet = getDataSet3();
+        ITable expectedTable = expectedDataSet.getTable("AGRO_MOB_USER");
+        IDataSet databaseDataSet = getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("AGRO_MOB_USER");
+        Assertion.assertEquals(expectedTable, actualTable);
+    }
 }
