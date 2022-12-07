@@ -1,8 +1,13 @@
-package ru.unclediga.jersey;
+package ru.unclediga.jersey.jerseytest;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
+import org.junit.Assert;
 import org.junit.Test;
+import ru.unclediga.jersey.Book;
+import ru.unclediga.jersey.BooksResource;
+import ru.unclediga.jersey.MyResource;
+import ru.unclediga.jersey.Repository;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.HttpHeaders;
@@ -38,6 +43,6 @@ public class JerseyTestFrameworkTest extends JerseyTest {
         assertEquals("Http Content-Type should be: ", MediaType.APPLICATION_JSON, response.getHeaderString(HttpHeaders.CONTENT_TYPE));
 
         Book content = response.readEntity(Book.class);
-        assertEquals("Content of response is: ", Repository.getBook(1), content);
+        Assert.assertEquals("Content of response is: ", Repository.getBook(1), content);
     }
 }

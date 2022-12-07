@@ -1,4 +1,4 @@
-package ru.unclediga.jersey;
+package ru.unclediga.jersey.feign;
 
 import feign.Feign;
 import feign.Logger;
@@ -9,7 +9,10 @@ import feign.slf4j.Slf4jLogger;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Test;
+import ru.unclediga.jersey.Book;
+import ru.unclediga.jersey.Repository;
 
 import java.util.List;
 
@@ -31,6 +34,6 @@ public class FeignTest {
     @Test
     public void getBook2Test() {
         Book book = bookClient.findById(1);
-        assertEquals(book.getId(), Repository.getBook(1).getId());
+        Assert.assertEquals(book.getId(), Repository.getBook(1).getId());
     }
 }

@@ -1,4 +1,4 @@
-package ru.unclediga.jersey;
+package ru.unclediga.jersey.dbunit;
 
 import java.io.InputStream;
 

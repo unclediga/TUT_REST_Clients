@@ -1,4 +1,4 @@
-package ru.unclediga.jersey;
+package ru.unclediga.jersey.restassured;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
@@ -8,8 +8,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.junit.Test;
 import org.junit.Before;
+import ru.unclediga.jersey.MyResourceTest;
 
-public class TestRESTAssured extends MyResourceTest{
+public class TestRESTAssured extends MyResourceTest {
     @Before
     public void setup() {
         baseURI = "http://localhost";
