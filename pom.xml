@@ -111,12 +111,13 @@
             <artifactId>feign-slf4j</artifactId>
             <version>10.11</version>
         </dependency>
+       <!--
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
-
+       -->
         <dependency>
             <groupId>org.dbunit</groupId>
             <artifactId>dbunit</artifactId>
