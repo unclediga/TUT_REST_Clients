@@ -1,4 +1,4 @@
-package ru.unclediga.jersey.feign;
+package ru.unclediga.example.feign;
 
 import feign.Param;
 import feign.RequestLine;

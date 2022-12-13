@@ -1,4 +1,4 @@
-package ru.unclediga.jersey.retrofit;
+package ru.unclediga.example.retrofit;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

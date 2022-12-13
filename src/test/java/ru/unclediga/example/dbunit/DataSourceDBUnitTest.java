@@ -1,8 +1,4 @@
-package ru.unclediga.jersey.dbunit;
-
-import java.io.InputStream;
-
-import javax.sql.DataSource;
+package ru.unclediga.example.dbunit;
 
 import org.dbunit.Assertion;
 import org.dbunit.DataSourceBasedDBTestCase;
@@ -12,10 +8,14 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import javax.sql.DataSource;
+import java.io.InputStream;
 
 @RunWith(JUnit4.class)
 public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
@@ -32,7 +32,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Override
     protected IDataSet getDataSet() throws Exception {
-        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data3.xml")) {
+        try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data.xml")) {
             return new FlatXmlDataSetBuilder().build(resourceAsStream);
         }
     }
@@ -43,7 +43,7 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         }
     }
 
-    private IDataSet getDataSet3() throws Exception {
+    private IDataSet getDataSetAgro() throws Exception {
         try (InputStream resourceAsStream = getClass().getClassLoader().getResourceAsStream("dbunit/data3.xml")) {
             return new FlatXmlDataSetBuilder().build(resourceAsStream);
         }
@@ -77,6 +77,14 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         ITable actualTable = databaseDataSet.getTable("CLIENTS");
         Assertion.assertEquals(expectedTable, actualTable);
     }
+    @Test(expected = org.dbunit.dataset.NoSuchTableException.class)
+    public void givenDataSetEmptySchema_whenDataSetCreated_thenTablesNotFound() throws Exception {
+        IDataSet expectedDataSet = getDataSet();
+        ITable expectedTable = expectedDataSet.getTable("NEW_CLIENTS");
+        IDataSet databaseDataSet = getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("NEW_CLIENTS");
+        Assertion.assertEquals(expectedTable, actualTable);
+    }
 
     @Test
     public void givenDataSetEmptySchema_whenDataSetCreated_thenTablesAreEqual2() throws Exception {
@@ -84,9 +92,17 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
         ITable expectedTable = expectedDataSet.getTable("CLIENTS");
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("CLIENTS");
-        Assertion.assertEquals(expectedTable, actualTable);
+        Assertion.assertEqualsIgnoreCols(expectedTable,actualTable,new String[]{"id","last_name"});
     }
 
+    @Test(expected = junit.framework.ComparisonFailure.class)
+    public void givenDataSetEmptySchema_whenDataSetCreated_thenTablesNotEqual2() throws Exception {
+        IDataSet expectedDataSet = getDataSet2();
+        ITable expectedTable = expectedDataSet.getTable("CLIENTS");
+        IDataSet databaseDataSet = getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("CLIENTS");
+        Assertion.assertEqualsIgnoreCols(expectedTable,actualTable,new String[]{"id"});
+    }
     @Test
     public void givenDataSetEmptySchema_whenDataSetCreated_thenTablesAreEqual3() throws Exception {
         IDataSet expectedDataSet = getDataSet2();
@@ -98,10 +114,16 @@ public class DataSourceDBUnitTest extends DataSourceBasedDBTestCase {
 
     @Test
     public void AGRO_MOB_USER() throws Exception {
-        IDataSet expectedDataSet = getDataSet3();
+        IDataSet expectedDataSet = getDataSetAgro();
         ITable expectedTable = expectedDataSet.getTable("AGRO_MOB_USER");
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("AGRO_MOB_USER");
-        Assertion.assertEquals(expectedTable, actualTable);
+        try {
+            Assertion.assertEquals(expectedTable, actualTable);
+        }catch (junit.framework.ComparisonFailure e){
+            Assert.assertEquals(e.getExpected(),"4");
+            Assert.assertEquals(e.getActual(),"0");
+            Assert.assertEquals(e.getMessage(),"row count (table=AGRO_MOB_USER) expected:<[4]> but was:<[0]>");
+        }
     }
 }

@@ -1,4 +1,4 @@
-package ru.unclediga.jersey.feign;
+package ru.unclediga.example.feign;
 
 import feign.Feign;
 import feign.Logger;
@@ -11,19 +11,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.unclediga.example.MyResourceTest;
 import ru.unclediga.jersey.Book;
+import ru.unclediga.jersey.Main;
 import ru.unclediga.jersey.Repository;
 
 import java.util.List;
 
-public class FeignTest {
+public class FeignTest extends MyResourceTest {
     BookClient bookClient = Feign.builder()
             .client(new OkHttpClient())
             .encoder(new GsonEncoder())
             .decoder(new GsonDecoder())
             .logger(new Slf4jLogger(BookClient.class))
             .logLevel(Logger.Level.FULL)
-            .target(BookClient.class, "http://localhost:8081/books");
+            .target(BookClient.class, Main.BASE_URI + "books");
 
     @Test
     public void getAllBooksTest() {

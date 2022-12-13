@@ -1,20 +1,25 @@
-package ru.unclediga.jersey.restassured;
+package ru.unclediga.example.restassured;
 
 import static io.restassured.RestAssured.*;
-import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
 import javax.ws.rs.core.MediaType;
 
 import org.junit.Test;
 import org.junit.Before;
-import ru.unclediga.jersey.MyResourceTest;
+import ru.unclediga.example.MyResourceTest;
+import ru.unclediga.jersey.Main;
 
 public class TestRESTAssured extends MyResourceTest {
     @Before
     public void setup() {
-        baseURI = "http://localhost";
-        port = 8081;
+        baseURI = Main.BASE_URI;
+        //port = 8081;
+        // javadocs ----------
+        // public static int port
+        //   The port that's used by REST assured when it's left out of the specified URI
+        //   when making a request. Default port will evaluate to 8080.
+
     }
 
     @Test

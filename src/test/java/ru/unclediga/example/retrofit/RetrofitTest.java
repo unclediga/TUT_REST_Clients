@@ -1,11 +1,13 @@
-package ru.unclediga.jersey.retrofit;
+package ru.unclediga.example.retrofit;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.unclediga.example.MyResourceTest;
 import ru.unclediga.jersey.Book;
+import ru.unclediga.jersey.Main;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,13 +15,13 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class RetrofitTest {
+public class RetrofitTest extends MyResourceTest {
     private static BookService service;
 
     @BeforeClass
     public static void startUp() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost:8081")
+                .baseUrl(Main.BASE_URI)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

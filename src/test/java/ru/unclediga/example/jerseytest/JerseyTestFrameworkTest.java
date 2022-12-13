@@ -1,4 +1,4 @@
-package ru.unclediga.jersey.jerseytest;
+package ru.unclediga.example.jerseytest;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
@@ -17,6 +17,15 @@ import javax.ws.rs.core.Response;
 import static org.junit.Assert.*;
 
 public class JerseyTestFrameworkTest extends JerseyTest {
+    /*
+    ...
+    INFO: Creating GrizzlyTestContainer configured at the base URI http://localhost:9998/
+    дек 13, 2022 1:53:24 PM org.glassfish.grizzly.http.server.NetworkListener start
+    INFO: Started listener bound to [localhost:9998]
+    дек 13, 2022 1:53:24 PM org.glassfish.grizzly.http.server.HttpServer start
+    INFO: [HttpServer] Started.
+    ...
+     */
     @Override
     protected Application configure() {
         return new ResourceConfig(MyResource.class, BooksResource.class);
