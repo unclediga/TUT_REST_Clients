@@ -15,6 +15,7 @@ public class Movie {
     private String director;
     private String title;
     private int year;
+    private String imdbId;
 
     public Movie() {
     }
@@ -49,5 +50,12 @@ public class Movie {
         this.year = year;
     }
 
+    public String getImdbId() {
+        return imdbId;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
+    }
 }
 
