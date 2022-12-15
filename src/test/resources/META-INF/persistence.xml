@@ -31,7 +31,7 @@ INFO - PersistenceUnit 'movie-unit' is a RESOURCE_LOCAL one, you'll have to mana
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>movieDatabase</jta-data-source>
         <non-jta-data-source>movieDatabaseUnmanaged</non-jta-data-source>
-<!--        <class>ru.unclediga.example.openejb.Movie</class>-->
+        <class>ru.unclediga.example.openejb.Movie</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.H2Platform"/>
